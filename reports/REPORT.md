@@ -35,21 +35,21 @@ hoặc closure giả.
 
 | Evidence | Giá trị |
 | --- | --- |
-| SHA-256 từ `evidence/pre-gold/clip_01/manifest.json` | Không có manifest để xác minh |
-| Thời điểm khóa | Không có evidence pre-gold |
-| Số row / frame / track trước khi mở reference | Không xác minh được; bản hiện tại có 611 row / 190 frame / 8 track |
+| Kết quả được cung cấp | `ban_vs_gold` trong `outputs/eval_vs_gold.json` |
+| Bản annotation được chấm | 611 row / 190 frame / 8 track |
+| SHA-256 và thời điểm khóa pre-gold | Không có `evidence/pre-gold/clip_01/manifest.json` để xác minh |
 
-| Phiên bản | HOTA | DetA | AssA | LocA | IDF1 | MOTA | MOTP | FP | FN | IDSW |
+| So sánh | HOTA | DetA | AssA | LocA | IDF1 | MOTA | MOTP | FP | FN | IDSW |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Bản pre-gold | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A | N/A |
-| Bản hiện tại / sau rework | 0.799 | 0.778 | 0.823 | 0.864 | 0.956 | 0.909 | 0.850 | 45 | 7 | 0 |
+| `ban_vs_gold` | 0.799 | 0.778 | 0.823 | 0.864 | 0.956 | 0.909 | 0.850 | 45 | 7 | 0 |
 
-**Cổng annotation: ĐẠT** — `IDF1 = 0.956`, `MOTA = 0.909`,
-`MOTP = 0.850` (yêu cầu lần lượt là 0.80, 0.75 và 0.70).
+**Cổng annotation: ĐẠT** — `{'IDF1': 0.956, 'MOTA': 0.909, 'MOTP': 0.850}`.
 
-Không có snapshot pre-gold nên không thể khẳng định thay đổi nào đã được thực
-hiện giữa hai phiên bản. Bản hiện tại vẫn có các finding sau và cần sửa trong
-CVAT rồi export lại nếu tiếp tục rework:
+Bảng được cung cấp xác nhận chất lượng của bản annotation hiện tại khi so với
+gold. Vì không có snapshot/manifest pre-gold và không có một hàng metric
+`pre_gold_vs_gold` riêng, báo cáo không thể tính mức thay đổi trước–sau rework.
+Bản hiện tại vẫn có các finding sau và cần sửa trong CVAT rồi export lại nếu
+tiếp tục rework:
 
 | Loại lỗi | Frame MOT | ID của bản hiện tại | Trạng thái / hành động cần làm |
 | --- | --- | --- | --- |
